@@ -1,0 +1,59 @@
+The primitive data structures available in Python, like numbers, strings, and lists are 
+designed to represent simple things. 
+
+Defining class in Python 
+
+################################################################################################
+class Dog: 
+    pass #pass is a placeholder where code will eventually go. It allows us to run this code 
+         #without throwing an error. 
+
+#################################################################################################
+
+Instance Attributes and Class Attributes: 
+all classes create objects, and all objects contain characteristics called attributes(referred to as 
+properties). Use the __init__() method to initialize an object's initial attributes by giving them 
+their default value or state. This method must have at least one argument as well as self variable, 
+which referes to the object itself.
+
+While instance attributes are specific to each object, class attributes are same for all instances 
+
+
+#####################################################################################################
+
+class Dog:
+    # Class attribute 
+    species = 'mammal'
+    # initialize / instance attributes 
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age 
+#####################################################################################################
+Instance Methods: 
+Instance methods are defined inside a class and are used to get the contents of an instance. They 
+can also be used to perform operations with the attributes of our objects. Like the __init__ method, 
+the first argument is always self:
+
+Modifying Attributes: 
+You can change the value of attributes based on some behavior:
+
+##########################################################################################################
+
+class Email:
+    def __init__(self):
+        self.is_sent = False
+    
+    def send_email(self):
+        self.is_sent = True 
+
+##########################################################################################################
+
+Python Object Inheritance: 
+
+Child classes extend or override the functionality of parent classes. The most basic type of class is an object, 
+which generally all other classes inherit as their parent. 
+
+isinstance() function is used to determine if an instance is also an instance of a certain parent class. 
+
+Overriding the functionality of a Parent Class 
+
