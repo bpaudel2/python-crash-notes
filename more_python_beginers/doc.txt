@@ -1,0 +1,219 @@
+Formatting in Python: 
+1. Spaces not Tab 
+2. variable_name with underscore 
+3. avoid extraneous whitespace 
+
+Tool like linting will help you 
+>> pip install pylint 
+
+Use docstring for inline documentation 
+
+def print_hello(name: str) -> str: 
+    """
+    Greets the user by name 
+
+    Parameters: 
+        name (str): The name of the user 
+    Returns: 
+        str: The greeting 
+    """
+    print('Hello, ' +  name)
+
+Type hints: Tell the editor and linter what data types to 
+    expect. DOES NOT cause "compiler" errors.
+
+def get_greeting(name: str) -> str: 
+    return 'Hello, '+name
+
+LAMBDA: 
+
+def sorter(item):
+    return item['name']
+
+presenters = [
+    {'name': 'Susan', 'age':50},
+    {'name': 'Christopher', 'age':47}
+]
+
+presenters.sort()
+print(presenters)
+
+presenters.sort(key=sorter)
+
+#using lambda 
+presenters.sort(key=lambda item: item['name'])
+
+# Classes 
+# PascalCasing
+
+class presenters():
+    def __init__(self, name):
+        #Constructor 
+        self.name = name #Field 
+    
+    def say_hello(self):
+        #method 
+        print('Hello, '+ self.name)
+
+presenter = Presenter('Chris')
+
+Accessibility in Python 
+1. Everything is public 
+2. _ means (something that starts with _) avoid unless you really know 
+    what you are doing 
+3. __ (double underscore) means do not use 
+
+
+Setting up properties: 
+
+class Presenter():
+    def__init__(self, name):
+        #Constructor
+        self.name = name
+    
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        # cool validation here 
+        self.__name = value
+    
+
+
+# Inheritance: 
+All methods in Python are virtual; can override or redefine their behavior 
+Keyword super to access parent class 
+constructor 
+properties in methods 
+Must always call parent constructor
+
+# DJango 
+Multiple inheritance (Mixins)
+take advantage of framework
+streamline repetious operations 
+
+#Working with files: 
+For Python 3.6 or higher, use pathlib library
+
+from pathlib import Path 
+
+#where am I 
+cwd = Path.cwd()
+print(cwd)
+
+#combine parts to create full path and file name 
+new_file = Path.joinpath(cwd, 'new_file_txt')
+print(new_file)
+
+print(new_file.exists())
+
+parent = cwd.parent 
+
+print(parent.is_dir())
+
+print(parent.is_file())
+
+for child in parent.iterdir():
+    if child.is_dir():
+        print(child)
+
+demo_file = Path(Path.joinpath(cwd, 'demo.txt'))
+
+print(demo_file.name)
+
+print(demo_file.suffix)
+
+print(demo_file.parent.name)
+
+print(demo_file.stat().st_size)
+
+
+#Working With Files: 
+
+stream = open(file_name, mode, buffer_size) #buffer_size is default most of the time 
+
+Modes: 
+r - Read(default)
+w - Truncate and write 
+a - Append if file exists 
+x - Write, fail if file exists 
++ - Updating (read/write)
+
+t - Text(default)
+b - binary
+
+stream = open('demo.txt')
+print(stream.readable())
+print(stream.readline())
+print(stream.close())
+
+Writing to file 
+
+stream = open('output.txt', 'wt')
+stream.write('H')
+stream.writelines(['ello','world'])
+stream.write('\n')
+strea.close()
+
+Managing stream
+stream = open('output.txt', 'wt')
+stream.write('Demo!')
+strea.seek(0)
+stream.write('cool')
+stream.flush()
+strea.close()
+
+#Clean up WITH WITH 
+try: 
+    stream = open('output.txt', 'wt')
+    stream.write('Lorem ipsum dolar')
+finally:
+    stream.close()
+
+with open('output.txt','wt') as stream:
+    stream.write('Lorem ipsum dolar')
+
+
+# Asynchronous Operations 
+Streams
+async/await 
+Synchronization(locks)
+Exception Management
+
+
+async def main():
+    start_time = default_timer()
+
+    async with aiohttp.ClientSession() as session:
+        two_task = asyncio.create_task(load_data(session, 2))
+        three_task = asyncio.create_task(load_data(session, 3))
+
+        await asyncio.sleep(1)
+        print('Doing other work')
+
+        two_result = await two_task 
+        three_result = await three_task 
+
+        elapsed_time = default_timer() - start_time
+        print(f'The operation took {elapsed_time:.2} seconds)
+
+
+import aiohttp 
+from timeit import default_timer 
+
+async def load_data(session, delay):
+    async with session.get(f'https://httpbin.org/delay/{delay}') as resp:
+        await resp.text()
+
+
+
+
+
+
+
+
+
+
+

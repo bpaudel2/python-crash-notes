@@ -1,0 +1,49 @@
+First install VS Code and Python 
+Install Extension in VS Code for Python and Install 
+Close out and reopen visual studio for extension to 
+come to affect 
+
+The best way to work with Python is by using 
+Virtual Environment. Virtual Environment avoids 
+installing packages globally.
+pip is the to go package installer for Python 
+
+#install an individual package 
+pip install colorama 
+
+#install from a list of packages 
+pip install -r requirements.txt 
+
+#requirements.txt 
+colorama 
+
+In order to use VirtualEnv: 
+
+>> pip install virtualenv 
+#windows 
+python -m venv <folder_name>
+
+#linux 
+virtualenv <folder_name>
+
+Activating Virtual Environments: 
+
+# windows 
+# cmd.exe 
+
+<folder_name>\Scripts\Activate.bat 
+
+# powershell 
+<folder_name>\Scripts\Activate.ps1 
+
+# bash shell 
+. ./<folder_name>/Scripts/activate 
+
+# Linux 
+<folder_name>/bin/activate 
+
+After you activate virtual environment, then you can install 
+packages like you install them globally. 
+
+
+
